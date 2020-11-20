@@ -1,0 +1,142 @@
+// ---------- colors ----------
+
+$colorMain: "";
+$colorSecondary: "";
+
+// ---------- effects ----------
+
+$trans: 0.2;
+
+// ---------- easing ----------
+
+$ezpz: cubic-bezier(0.65, 0, 0.35, 1);
+
+// ---------- dimensions ----------
+
+$gap: 36px;
+$rad: 18px;
+$pad: 64px;
+
+$topbarHeight: 24px;
+
+// ---------- animations ----------
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+// ---------- social ----------
+
+.soc-button {
+    width: 24px;
+    height: 24px;
+    //background: white;
+    //padding: 12px;
+    margin-left: 24px;
+    //border-radius: 100%;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+.insta {
+    background-image: url("../assets/i.png");
+    background-size: 135% !important;
+    filter: invert(1);
+  }
+  
+  .fb {
+    background-image: url("../assets/f.png");
+    filter: invert(1);
+    background-size: 130% !important;
+  }
+  
+  .li {
+    background-image: url("../assets/li.png");
+    filter: invert(1);
+    background-size: 105% !important;
+    transform: scale(1.2);
+  }
+  
+  .tw {
+    background-image: url("../assets/t.png");
+    filter: invert(1);
+  }
+
+  // ---------- staging ----------
+
+  .stage-section {
+    opacity: 0 !important;
+    transform: scale(0.9) !important;
+    transition: 600ms;
+    //background: gray;
+  }
+
+  .enter {
+    opacity: 1;
+    transform: translate(0px, 0px);
+  }
+  
+  .stage-left {
+    opacity: 0 !important;
+    transform: translate(-500px, 0px) scale(0.8);
+    transition: 1.5s !important;
+    transition-delay: 0s;
+  }
+  
+  .stage-right {
+    transform: translate(500px, 0px);
+    opacity: 0 !important;
+    transition: 2s $ezpz !important;
+    transition-delay: 0ms;
+  }
+
+  .stage-up {
+    opacity: 0;
+    transition: 1s;
+    transform: translate(0px, -64px);
+  }
+
+  .stage-down {
+    opacity: 0;
+    transition: 2s;
+    transform: translate(0px, 300px);
+  }
+  
+  .stage-in {
+    opacity: 0;
+    transition: 1s;
+    height: 250px;
+  }
+
+  // ---------- scrollbar ----------
+
+  /* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: white; 
+    border: 4px solid black;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: white; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #bbb; 
+  }
+
+  // ---------- graphics ----------
+
+  .icon {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }

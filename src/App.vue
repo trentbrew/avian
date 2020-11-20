@@ -76,7 +76,7 @@ export default {
   },
   methods: {
     getWeather() {
-      const weather = require('weather-js');
+      const weather = require('./plugins/weather-js');
 
       weather.find(
         { 

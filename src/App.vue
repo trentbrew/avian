@@ -1,10 +1,12 @@
 <script>
 import Calendar from 'v-calendar/lib/components/calendar.umd'
+import Weather from '@/components/Weather'
 
 export default {
   name: 'App',
   components: {
-    Calendar
+    Calendar,
+    Weather
   },
   data() {
     return {
@@ -183,7 +185,8 @@ export default {
       </div>
       
       <div class="weather" :class="( dialogs.weatherActive == true ? 'dialog' : 'stage-dialog' )">
-      
+        <div class="tri"></div>
+        <Weather />
       </div>
       
       <div class="menu" :class="( dialogs.menuActive == true ? 'dialog' : 'stage-dialog' )">
@@ -228,7 +231,7 @@ body {
 
 .dialog-container {
   position: absolute;
-  top: 12px;
+  top: 6px;
   width: 100%;
 
   .tri {
@@ -245,6 +248,7 @@ body {
   .vc-container {
     border: none !important;
     background: black !important;
+    border-radius: 12px;
   }
 
   .vc-day-content, .vc-title, .vc-weekday {
@@ -280,11 +284,10 @@ body {
   
   .stage-dialog {
     opacity: 0;
-    transform: translateY(-18px);
+    transform: translateY(-8px);
     pointer-events: none;
     transition: $trans;
-    width: 200px;
-    height: 300px;
+    width: max-content;
     border-radius: 12px;
     margin: auto;
     z-index: 99999;
@@ -292,13 +295,12 @@ body {
   }
 
   .dialog {
-    background: $colorDark;
+    //background: $colorDark;
     border-radius: 12px;
     opacity: 1;
     transform: transitionY(0px);
     transition: $trans;
-    width: 200px;
-    height: 300px;
+    width: max-content;
     margin: auto;
     z-index: 99999;
     position: absolute;
@@ -374,8 +376,8 @@ body {
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
-    height: 22px;
-    width: 22px;
+    height: 20px;
+    width: 20px;
     cursor: pointer;
 
     &:hover {

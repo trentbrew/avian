@@ -23,7 +23,9 @@ export default {
 
 <template>
 <div class="menu-container">
-    <ul>
+
+hi
+    <!--ul>
         <li></li>
         <li></li>
         <li></li>
@@ -31,13 +33,18 @@ export default {
         <li></li>
         <li></li>
         <li></li>
-    </ul>
+    </ul-->
 </div>  
 </template>
 
 <style lang="scss" scoped>
 @import '../assets/styles/global';
 
-
+.menu-container {
+    height: 300px;
+    width: 250px;
+    background: black;
+    border-radius: $rad 0px $rad $rad;
+}
 
 </style>

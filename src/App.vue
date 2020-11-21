@@ -1,12 +1,14 @@
 <script>
-import Calendar from 'v-calendar/lib/components/calendar.umd'
+import Calendar from '@/components/Calendar'
 import Weather from '@/components/Weather'
+import Menu from '@/components/Menu'
 
 export default {
   name: 'App',
   components: {
     Calendar,
-    Weather
+    Weather,
+    Menu
   },
   data() {
     return {
@@ -36,17 +38,6 @@ export default {
         calendarActive: false,
         weatherActive: false,
         menuActive: false,
-        calendar: {
-          attributes: [
-            {
-              dot: true,
-              popover: {
-
-              },
-
-            }
-          ]
-        }
       },
     }
   },
@@ -107,10 +98,18 @@ export default {
       var m = today.getMinutes();
       //var s = today.getSeconds();
       m = this.checkTime(m);
+      m = this.checkTime(m);
       //s = this.checkTime(s);
       this.time.currentTime = (h + ":" + m);
       this.time.currentTime24 = ((h < 13 ? h : h - 12 ) + ":" + m + ( h < 13 ? ' AM' : ' PM' ));
-      this.time.currentDate = this.time.weekdays[parseInt(today.getDay() - 1)] + ' ' + this.time.months[today.getMonth()] + ' ' + today.getUTCDate();
+      this.time.currentDate = (
+
+        this.time.weekdays[parseInt(today.getDay() - 1)]
+        + ' ' + 
+        this.time.months[today.getMonth()]
+        + ' ' + 
+        today.getUTCDate());
+
       setTimeout(this.startTime, 500);
     },
     checkTime(i) {
@@ -181,7 +180,7 @@ export default {
     <div class="dialog-container">
       <div class="calendar" :class="( dialogs.calendarActive == true ? 'dialog' : 'stage-dialog' )">
         <div class="tri"></div>
-        <Calendar trim-weeks is-dark :attributes="dialogs.calendar.attributes" />
+        <Calendar/>
       </div>
       
       <div class="weather" :class="( dialogs.weatherActive == true ? 'dialog' : 'stage-dialog' )">
@@ -190,7 +189,8 @@ export default {
       </div>
       
       <div class="menu" :class="( dialogs.menuActive == true ? 'dialog' : 'stage-dialog' )">
-      
+        <div class="tri menu-tri"></div>
+        <Menu />
       </div>
     </div>
 
@@ -211,7 +211,7 @@ export default {
 $colorMain: #212225;
 $colorDark: #131417;
 $colorLight: #2A2B2E;
-$colorSecondary: #DFABBF;
+$colorSecondary: #3182CE;
 
 $trans: 200ms;
 
@@ -234,29 +234,53 @@ body {
   top: 6px;
   width: 100%;
 
-  .tri {
-    border-color: transparent transparent black transparent;
-    border-style: solid;
-    border-width: 16px 16px 16px 16px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top:-12px;
-    width: 0px;
-    height: 0px;
-  }
-
   .vc-container {
     border: none !important;
     background: black !important;
     border-radius: 12px;
   }
 
-  .vc-day-content, .vc-title, .vc-weekday {
+  .vc-title {
+    color: white !important;
+  }
+
+  .vc-day-content, .vc-title {
     font-weight: 100 !important;
   }
 
   .vc-weekday {
     color: $colorSecondary !important;
+    font-weight: 400 !important;
+  }
+
+  .vc-day-content {
+      color: white !important;
+      opacity: 1 !important;
+  }
+
+  .vc-dot {
+    width: 3px !important;
+    height: 3px !important;
+  }
+
+  .menu-tri {
+    margin-left: auto; 
+    border-width: 10px 10px 10px 10px !important;
+    margin-right: -10px !important;
+    margin-top: 12px !important;
+    margin-bottom: -12px;
+    transform: rotate(135deg);
+  }
+
+  .tri {
+    border-color: transparent transparent black transparent;
+    border-style: solid;
+    border-width: 12px 12px 12px 12px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top:-12px;
+    width: 0px;
+    height: 0px;
   }
 
   .calendar {
@@ -271,7 +295,7 @@ body {
 
   .weather {
     top: 24px;
-    left: 164px;
+    left: 140px;
     right: 0px;
     margin: auto !important;
   }

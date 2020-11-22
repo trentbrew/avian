@@ -16,9 +16,9 @@ export default {
   data() {
     const todos = [
       {
-        description: 'Take Noah to basketball practice.',
+        description: 'ne^2',
         isComplete: false,
-        dates: { weekdays: 6 },
+        dates: { weekdays: 4 },
         color: 'blue',
       },
     ];
@@ -59,7 +59,7 @@ export default {
 
 <template>
   <div class="example">
-    <v-calendar :attributes="attributes">
+    <v-calendar :attributes="attributes" trim-weeks>
       <template #day-popover="{ day, format, masks, dayTitle, attributes }">
         <div>
           <span v-if="step === 1">Using my own content now</span>

@@ -98,9 +98,9 @@ export default {
       var m = today.getMinutes();
       //var s = today.getSeconds();
       m = this.checkTime(m);
-      m = this.checkTime(m);
       //s = this.checkTime(s);
       this.time.currentTime = (h + ":" + m);
+      console.log(m);
       this.time.currentTime24 = ((h < 13 ? h : h - 12 ) + ":" + m + ( h < 13 ? ' AM' : ' PM' ));
       this.time.currentDate = (
 
@@ -154,6 +154,12 @@ export default {
       } else {
         console.log('invalid operation');
       }
+    },
+    exitTopDialogs() {
+      console.log('clicked out of modal');
+      this.dialogs.calendarActive = false;
+      this.dialogs.weatherActive = false;
+      this.dialogs.menuActive = false;
     }
   }
 }
@@ -201,7 +207,9 @@ export default {
       <div :style="cursorCircle" class="g-cursor__circle"></div>
       <div class="g-cursor__point" ref="point" :style="cursorPoint"></div>
     </div-->
-    <router-view :dataRef='dataRef' />
+    <div @click="exitTopDialogs()" class="route-container">
+      <router-view :dataRef='dataRef' />
+    </div>
   </div>
 </template>
 

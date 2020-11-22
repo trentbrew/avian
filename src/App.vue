@@ -15,7 +15,7 @@ export default {
       unveil: null,
       dataRef: {},
       time: {
-        weekdays: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
+        weekdays: ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],
         months: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
         currentDate: null,
         currentTime: null,
@@ -104,7 +104,7 @@ export default {
       this.time.currentTime24 = ((h < 13 ? h : h - 12 ) + ":" + m + ( h < 13 ? ' AM' : ' PM' ));
       this.time.currentDate = (
 
-        this.time.weekdays[parseInt(today.getDay() - 1)]
+        this.time.weekdays[parseInt(today.getDay())]
         + ' ' + 
         this.time.months[today.getMonth()]
         + ' ' + 

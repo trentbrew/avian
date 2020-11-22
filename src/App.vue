@@ -490,7 +490,7 @@ body {
 
 .loading-veil {
   //display: none;
-  background: $colorDark;
+  background: black;
   opacity: 1;
   width: 100%;
   height: 100vh;

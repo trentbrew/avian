@@ -29,15 +29,7 @@ export default {
     };
   },
   mounted() {
-      console.log(PopoverRow);
-      this.getToday();
-      console.log("today's date", this.today);
-      var dates = document.getElementsByClassName('vc-day-content');
-      dates.forEach((date) => {
-          if(date.innerHTML == this.today) {
-              date.style.border = 'rgba(255,255,255,0.4) 1px solid';
-          }
-      });
+
   },
   computed: {
     attributes() {
@@ -60,10 +52,7 @@ export default {
     },
   },
   methods: {
-      getToday() {
-          var today = new Date();
-          this.today = today.getUTCDate();
-      }
+
   }
 };
 </script>

@@ -5,7 +5,7 @@ export default {
     return {
       query: '',
       appearance: {
-        backgroundColor: '#eee',
+        backgroundColor: '#e0e0e0',
       },
       options: {
         normalScrollElements: '.test-container, .modal-active, .modal-inactive, .more-work-grid, .more-work-container, .modal-images',
@@ -185,17 +185,18 @@ export default {
       <!-- Section -->
       <section class="section">
         <div class="page-container" :style="'background-color: ' + appearance.backgroundColor" :class="( activeSection == 0 ? '' : 'stage-section' )">
-            <div class="landing-search-container">
+            <!--div class="landing-search-container">
               <p class="search-label">Open an app or type a URL</p>
               <input type="text" id="main-search" v-model="query">
-            </div>
+            </div-->
         </div>
       </section>
 
       <!-- Section -->
       <section class="section">
         <div class="page-container" :style="'background-color: ' + appearance.backgroundColor" :class="( activeSection == 1 ? '' : 'stage-section' )">
-          <webview class="webview" src="https://www.github.com/"></webview>
+          TODO: experiment with webviews
+          <webview id="foo" src="https://www.github.com/" style="display:inline-flex; width:640px; height:480px"></webview>
         </div>
       </section>
 
@@ -217,6 +218,7 @@ export default {
   width: 100vw;
   height: 100vh;
   border: none;
+  background: red;
   border-radius: 12px 12px 0px 0px;
 }
 
@@ -252,7 +254,7 @@ export default {
 }
 
 .page-container {
-  height: 100vh;
+  height: calc(100vh - 24px);
   width: 100%;
   margin: 0px;
   padding: 0px;
@@ -261,7 +263,7 @@ export default {
   align-items: center;
   background: blue;
   transition: 600ms;
-  border-radius: 12px 12px 0px 0px;
+  border-radius: 18px;
 }
 
 .arrows {

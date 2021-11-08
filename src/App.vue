@@ -2,6 +2,7 @@
 import Calendar from '@/components/Calendar'
 import Weather from '@/components/Weather'
 import Menu from '@/components/Menu'
+//import Dock from '@/components/Dock'
 
 export default {
   name: 'App',
@@ -15,7 +16,7 @@ export default {
       unveil: null,
       dataRef: {},
       time: {
-        weekdays: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
+        weekdays: ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],
         months: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
         currentDate: null,
         currentTime: null,
@@ -101,15 +102,13 @@ export default {
       //s = this.checkTime(s);
       this.time.currentTime = (h + ":" + m);
       console.log(m);
-      this.time.currentTime24 = ((h < 13 ? h : h - 12 ) + ":" + m + ( h < 13 ? ' AM' : ' PM' ));
+      this.time.currentTime24 = ((h < 13 ? h : h - 11 ) + ":" + m + ( h < 13 ? ' AM' : ' PM' ));
       this.time.currentDate = (
-
-        this.time.weekdays[parseInt(today.getDay() - 1)]
+        this.time.weekdays[parseInt(today.getDay())]
         + ' ' + 
         this.time.months[today.getMonth()]
         + ' ' + 
         today.getUTCDate());
-
       setTimeout(this.startTime, 500);
     },
     checkTime(i) {
@@ -309,7 +308,7 @@ body {
   }
 
   .menu {
-    top: 24px;
+    top: 18px;
     right: 24px;
     margin: auto !important;
   }
@@ -340,7 +339,7 @@ body {
 }
 
 .topbar {
-  background: black;
+  background: linear-gradient(rgba(0,0,0,0.3), transparent);
   color: white;
   position: fixed;
   top: 0px;
@@ -519,7 +518,7 @@ body {
 
 .fade-enter, .fade-leave-to {
   opacity: 0;
-  transform: scale(0.95);
+  transform: scale(0.5);
 }
 
 .fade-enter-active, .fade-leave-active {

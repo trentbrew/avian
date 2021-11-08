@@ -10,6 +10,8 @@ protocol.registerSchemesAsPrivileged([
   { scheme: 'app', privileges: { secure: true, standard: true } }
 ])
 
+var childWindows = [];
+
 async function createWindow() {
   // Create the browser window.
   const win = new BrowserWindow({
@@ -17,6 +19,7 @@ async function createWindow() {
     height: 600,
     fullscreen: true,
     frame: false,
+    webviewTag: true,
     webPreferences: {
       // Use pluginOptions.nodeIntegration, leave this alone
       // See nklayman.github.io/vue-cli-plugin-electron-builder/guide/security.html#node-integration for more info
@@ -24,15 +27,23 @@ async function createWindow() {
     }
   })
 
+
   if (process.env.WEBPACK_DEV_SERVER_URL) {
     // Load the url of the dev server if in development mode
     await win.loadURL(process.env.WEBPACK_DEV_SERVER_URL)
+    //await testChild.loadURL('https://open.spotify.com')
     if (!process.env.IS_TEST) win.webContents.openDevTools()
   } else {
     createProtocol('app')
     // Load the index.html when not in development
     win.loadURL('app://./index.html')
   }
+}
+
+function createTab(src) {
+  childWindows.push(new BrowserWindow({width: 800, height: 400, parent: win, modal:true}));
+  console.log(childWindows);
+  childWindows.loadURL(src);
 }
 
 // Quit when all windows are closed.
